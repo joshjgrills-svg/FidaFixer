@@ -5,62 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>FindaFixer | Top 50 Licensed Plumbers in Toronto (2025)</title>
-    <meta name="title" content="FindaFixer | Top 50 Licensed Plumbers in Toronto (2025)">
-    <meta name="description" content="Search the definitive directory of the top 50 most-reviewed plumbers in Toronto. Compare 24/7 emergency services, licensed pros, and get AI-powered diagnostics. Serving Downtown, North York, Etobicoke, and the GPA.">
-    <meta name="keywords" content="Toronto plumbers, emergency plumber Toronto, 24/7 plumbing service GTA, licensed plumber Toronto, drain cleaning Toronto, plumbing repair Toronto, best plumbers Toronto reviews">
-    <link rel="canonical" href="https://findafixer.ca/" />
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://findafixer.ca/">
-    <meta property="og:title" content="FindaFixer | Toronto's Top 50 Verified Plumbers">
-    <meta property="og:description" content="Connect with Toronto's elite plumbing network. 24/7 emergency response, verified pros, and AI-powered leak detection.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1200&h=630">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": "Top 50 Plumbers in Toronto",
-      "description": "A curated directory of the most highly rated plumbing services in Toronto based on verified Google reviews.",
-      "url": "https://findafixer.ca",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://findafixer.ca"
-      },
-      "numberOfItems": 50
-    }
-    </script>
-
+    <meta name="description" content="Search the definitive directory of the top 50 most-reviewed plumbers in Toronto.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-            -webkit-font-smoothing: antialiased;
-        }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; margin: 0; }
         #map { height: 100%; width: 100%; border-radius: 40px; }
         #fallback-error { display: none; position: fixed; inset: 0; background: white; z-index: 9999; padding: 40px; }
     </style>
 </head>
 <body>
+
     <div id="fallback-error">
         <h1 class="text-2xl font-bold text-red-600">Site Loading Error</h1>
-        <p class="mt-4 text-gray-600">The browser blocked the script. Please check the console for MIME errors.</p>
+        <p class="mt-4 text-gray-600">The browser is having trouble loading the App.js file. Check the filename in GitHub.</p>
     </div>
 
     <div id="root"></div>
@@ -68,7 +36,7 @@
     <script type="text/babel" data-presets="react" src="./App.js"></script>
 
     <script type="text/babel">
-        const { useState, useEffect } = React;
+        const { useState } = React;
 
         const AppShell = () => {
             return (
@@ -94,9 +62,10 @@
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<AppShell />);
 
-        // MIME Error Monitor
+        // Monitor for loading errors
         window.addEventListener('error', function(e) {
-            if (e.message.toLowerCase().includes('mime')) {
+            console.error("Load Error:", e.message);
+            if (e.message.toLowerCase().includes('mime') || e.message.toLowerCase().includes('script error')) {
                 document.getElementById('fallback-error').style.display = 'block';
             }
         });
