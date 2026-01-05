@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>FindaFixer | Top 50 Licensed Plumbers in Toronto (2025)</title>
-    <meta name="description" content="Search the definitive directory of the top 50 most-reviewed plumbers in Toronto.">
+    <meta name="description" content="Search the definitive directory of the top 50 most-reviewed plumbers in Toronto. Compare 24/7 emergency services and licensed pros.">
     
+    <meta property="og:title" content="FindaFixer | Toronto's Top 50 Verified Plumbers">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://findafixer.ca/">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
@@ -20,7 +23,7 @@
 
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f9fafb; margin: 0; }
-        #map { height: 100%; width: 100%; border-radius: 40px; }
+        #root { min-height: 100vh; }
         #fallback-error { display: none; position: fixed; inset: 0; background: white; z-index: 9999; padding: 40px; }
     </style>
 </head>
@@ -28,7 +31,7 @@
 
     <div id="fallback-error">
         <h1 class="text-2xl font-bold text-red-600">Site Loading Error</h1>
-        <p class="mt-4 text-gray-600">The browser is having trouble loading the App.js file. Check the filename in GitHub.</p>
+        <p class="mt-4 text-gray-600">The app file (App.js) could not be loaded. Please ensure the file is named <strong>App.js</strong> in your GitHub repository.</p>
     </div>
 
     <div id="root"></div>
@@ -36,8 +39,6 @@
     <script type="text/babel" data-presets="react" src="./App.js"></script>
 
     <script type="text/babel">
-        const { useState } = React;
-
         const AppShell = () => {
             return (
                 <div className="min-h-screen flex items-center justify-center">
@@ -49,10 +50,9 @@
                             Finda<span className="text-blue-700">Fixer</span>
                         </h1>
                         <p className="text-slate-400 text-xs mt-2 font-bold uppercase">Toronto Elite Directory</p>
-                        
                         <div className="mt-8 p-4 bg-blue-50 border border-blue-100 rounded-xl text-[10px] text-blue-700 font-mono">
                             System: Index Loaded ✅<br/>
-                            Action: Initializing Toronto Plumber Database...
+                            Action: Connecting to App.js...
                         </div>
                     </div>
                 </div>
@@ -62,10 +62,8 @@
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<AppShell />);
 
-        // Monitor for loading errors
         window.addEventListener('error', function(e) {
-            console.error("Load Error:", e.message);
-            if (e.message.toLowerCase().includes('mime') || e.message.toLowerCase().includes('script error')) {
+            if (e.message.toLowerCase().includes('mime') || e.filename.includes('App.js')) {
                 document.getElementById('fallback-error').style.display = 'block';
             }
         });
